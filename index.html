@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Douarking</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Douarking</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Accueil</a></li>
+            <li><a href="#liste-parking">Liste des parkings</a></li>
+            <li><a href="#">Page 2</a></li>
+            <li><a href="#">Page 3</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div id="liste-parking">
+        <h2>Liste des parking</h2>
+        <a data-toggle="collapse" href="#collapseParking" role="button" aria-expanded="false" aria-controls="collapseParking">
+            Afficher/Masquer
+        </a>
+        <div class="collapse col-md-12" id="collapseParking">
+            <table class="table table-hover">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Type de véhicule</th>
+                        <th>Coordonées GPS</th>
+                        <th>Nombre de places</th>
+                        <th>Email responsable</th>
+                        <th>Système de comptage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Nautibus</th>
+                        <td>Voitures & Vélos</td>
+                        <td><a href="https://www.google.com/maps/?q=45.781894,4.865199" target="_blank">45.781894, 4.865199</a></td>
+                        <td>80</td>
+                        <td><a href="mailto:responsable@nautibus-parking.fr">responsable@nautibus-parking.fr</a></td>
+                        <td>Barrières</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">BU</th>
+                        <td>Vélos</td>
+                        <td><a href="https://www.google.com/maps/?q=45.781715,4.869447" target="_blank">45.781715, 4.869447</a></td>
+                        <td>20</td>
+                        <td><a href="mailto:alexandre@doua-parking.fr">alexandre@doua-parking.fr</a></td>
+                        <td>Caméras</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Thémis</th>
+                        <td>Vélos</td>
+                        <td><a href="https://www.google.com/maps/?q=45.783464,4.871109" target="_blank">45.783464, 4.871109</a></td>
+                        <td>15</td>
+                        <td><a href="mailto:jean@doua-parking.fr">jean@doua-parking.fr</a></td>
+                        <td>Caméras</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Stade INSA</th>
+                        <td>Voitures</td>
+                        <td><a href="https://www.google.com/maps/?q=45.784693,4.877384" target="_blank">45.784693, 4.877384</a></td>
+                        <td>30</td>
+                        <td><a href="mailto:philippe@doua-parking.fr">philippe@doua-parking.fr</a></td>
+                        <td>Capteurs au sol</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
