@@ -7,14 +7,14 @@ A faire :
 
 - [x] Repli du tableau (afficher / masquer) en utilisant la fonction "collapse" de Bootstrap (pensez à inclure en plus de la bibliothèque bootstrap.js, jquery.js)
 
-- [ ] Ajout d'un parking (non persistant) via un formulaire :
-    - [ ] les données saisies sont vérifiées (validité, message d'erreurs, etc.)
+- [x] Ajout d'un parking (non persistant) via un formulaire :
+    - [x] les données saisies sont vérifiées (validité, message d'erreurs, etc.)
     - [ ] les informations de contact sont auto-complétées (pour tester vous devrez activer la gestion de profils de votre navigateur)
-    - [ ] le traitement du formulaire utilise des fonctions JavaScript du DOM (notamment, les méthodes createElement() et element.appendChild())
-    - [ ] le succès de l'ajout est confirmé par un message éphémère
+    - [ ] le traitement du formulaire utilise des fonctions JavaScript du DOM (notamment, les méthodes createElement() et element.appendChild()) // uniquement utilisé .append()
+    - [x] le succès de l'ajout est confirmé par un message éphémère
 - [ ] Suppression d'un parking (non persistant) :
-    - [ ] plusieurs solutions d'implémentation sont possibles, donc choisissez-en une en tenant compte de l'ergonomie
-    - [ ] vous aurez probablement besoin de la méthode element.removeChild()
+    - [x] plusieurs solutions d'implémentation sont possibles, donc choisissez-en une en tenant compte de l'ergonomie
+    - [ ] vous aurez probablement besoin de la méthode element.removeChild() 
 - [ ] Modification d'un parking (non persistant) :
     - [ ] plusieurs solutions d'implémentation sont possibles, donc choisissez-en une en tenant compte de l'ergonomie
     - [ ] vous aurez probablement besoin de la méthode element.innerHTML()

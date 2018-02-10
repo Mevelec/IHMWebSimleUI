@@ -5,11 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script type="application/javascript" src="main.js"></script>
 </head>
 <body>
+    <div id="alertOutputs">
+
+    </div>
     <nav>
         <div class="text-center">
             <h1>Douarking</h1>
@@ -23,17 +27,103 @@
 
     <div class="container">
         <div class="tab-content" id="nav-tabContent">
+            <!-- Accueil page -->
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="col-md-12">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et nisl eget lacus auctor lobortis eu et ante. Curabitur leo enim, congue eget ante a, vestibulum auctor odio.
-                    Phasellus nec dapibus ipsum. Quisque et ex ac orci laoreet elementum. Cras scelerisque tincidunt dolor, vel blandit tellus finibus eu. Donec dolor urna, eleifend quis imperdiet eu,
-                    porta sed quam. Praesent luctus sapien sit amet nibh ultricies facilisis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec et condimentum nisi, quis consequat tortor.
-                    Curabitur rhoncus lacus odio, non euismod justo aliquam quis. Nam eget placerat tellus.
+                    <b> Liste des Taches</b>
+                    <div class="row row-top-buffer">
+                        - [x] Affichage des parkings déjà renseignés (nom, type de véhicules, coordonnées GPS, nombre de places, email responsable, système de comptage) sous forme d'un tableau (comportant une dizaine de lignes "codées en dur" pour les tests)<br>
+                     </div>
+                     <div class="row row-top-buffer">
+                        - [x] Repli du tableau (afficher / masquer) en utilisant la fonction "collapse" de Bootstrap (pensez à inclure en plus de la bibliothèque bootstrap.js, jquery.js)<br>
+                    </div>
+                    <div class="row row-top-buffer">
+                    - [x] Ajout d'un parking (non persistant) via un formulaire :
+                        <div class="row-padding-left">
+                        - [x] les données saisies sont vérifiées (validité, message d'erreurs, etc.)<b> Mails peut passer si du genre george@gmail</b> <br>
+                        - [ ] les informations de contact sont auto-complétées (pour tester vous devrez activer la gestion de profils de votre navigateur)<br>
+                        - [x] le traitement du formulaire utilise des fonctions JavaScript du DOM (notamment, les méthodes createElement() et element.appendChild())<b> seul .append() a été utilisé</b><br>
+                        - [x] le succès de l'ajout est confirmé par un message éphémère<b> Utilisation des alertes bootstrap, pb d'affichage : overlay, accumulation de multiples messages...</b><br>
+                        </div>
+                    </div>
+                    <div class="row row-top-buffer">
+                    - [x] Suppression d'un parking (non persistant) :<br>
+                        <div class="row-padding-left">
+                        - [x] plusieurs solutions d'implémentation sont possibles, donc choisissez-en une en tenant compte de l'ergonomie<b> Supression par une croix lors du visionnage de la table</b><br>
+                        - [x] vous aurez probablement besoin de la méthode element.removeChild()<b> .remove() Utilisé</b><br>
+                        </div>
+                    </div>
+                    <div class="row row-top-buffer">
+                    - [ ] Modification d'un parking (non persistant) :<br>
+                        <div class="row-padding-left">
+                        - [ ] plusieurs solutions d'implémentation sont possibles, donc choisissez-en une en tenant compte de l'ergonomie<br>
+                        - [ ] vous aurez probablement besoin de la méthode element.innerHTML()<br>
+                        </div>
+                    </div>
+                    <div class="row row-top-buffer">
+                    - [x] Recherche dans le tableau :<br>
+                        <div class="row-padding-left">
+                        - [x] la requête (texte libre) est saisie dans une barre de recherche<br>
+                        - [x] le résultat de la recherche est une liste de toutes les ressources correspondant à la requête<br>
+                        </div>
+                    </div>
+                    <div class="row row-top-buffer">
+                    - [ ] Adaptation de votre site aux différents dispositifs ("responsive design", pour mobile, tablette, ordinateurs de bureau) :<br>
+                    </div>
+                    <div class="row row-top-buffer">
+                        - [ ] pour tester, vous pouvez utiliser votre smartphone ou la "vue adaptative" disponible dans les Outils de développement fournis par les navigateurs.<br>
+                    </div>
                 </div>
             </div>
+            <!-- Liste page -->
             <div class="tab-pane fade" id="liste-parking" role="tabpanel" aria-labelledby="nav-liste-tab">
                 <div class="col-md-12">
                     <h2>Liste des parking</h2>
+                    <a data-toggle="collapse" href="#Recherche-Menu" role="button" aria-expanded="false" aria-controls="Recherche-Menu">
+                        Recherche
+                    </a>
+                    <div class="collapse" id="Recherche-Menu" class="col-md-12">
+                        <form class="col-md-12 row">
+                            <div class="form-group col-md-4 has-danger">
+                                <label for="nom-form">Nom du parking</label>
+                                <input type="text" class="form-control" id="nom-find" placeholder="Saisir le nom">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="nbplace-form">Nombre de places</label>
+                                <input type="number" class="form-control" id="nbplace-find" placeholder="Saisir le nb de places">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="syscompage-form">Système de comptage</label>
+                                <select class="form-control" id="syscompage-find">
+                                    <option value="Tous">Tous</option>
+                                    <option value="Caméras">Caméras</option>
+                                    <option value="Barrières">Barrières</option>
+                                    <option value="Capteurs au sol">Capteurs au sol</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="typevehi-from">Type de véhicule</label>
+                                <select  class="form-control" id="typevehi-find">
+                                    <option value='Tous'>Tous</option>
+                                    <option value='Voitures' selected>Voitures</option>
+                                    <option value='Vélos'>Vélos</option>
+                                </select>
+                            </div>
+ <!--                            <div class="form-group col-md-4">
+                                <label for="lat-gps-form">Coordonées GPS</label>
+                                <input type="number" step="any" class="form-control" id="lat-gps-find" placeholder="Latitude">
+                                <p></p>
+                                <input type="number" step="any" class="form-control" id="lng-gps-find" placeholder="Longitude">
+                            </div> -->
+                            <div class="form-group col-md-4">
+                                <label for="email-find">Email responsable</label>
+                                <input type="text" class="form-control" id="email-find" placeholder="Saisir l'email">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <button type="button" class="btn btn-primary pull-right" onclick="find()">Chercher</button>
+                            </div>
+                        </form>
+                    </div>
                     <a data-toggle="collapse" href="#collapseParking" role="button" aria-expanded="false" aria-controls="collapseParking">
                         Afficher/Masquer
                     </a>
@@ -49,14 +139,19 @@
                                     <th>Système de comptage</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="parking-list">
                                 <tr>
                                     <th scope="row">Nautibus</th>
-                                    <td>Voitures & Vélos</td>
+                                    <td>Voitures</td>
                                     <td><a href="https://www.google.com/maps/?q=45.781894,4.865199" target="_blank">45.781894, 4.865199</a></td>
                                     <td>80</td>
                                     <td><a href="mailto:responsable@nautibus-parking.fr">responsable@nautibus-parking.fr</a></td>
                                     <td>Barrières</td>
+                                    <td>
+                                        <button type="button" class="close"  onclick="RemoveParking(this)" value='lol'>
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">BU</th>
@@ -65,6 +160,11 @@
                                     <td>20</td>
                                     <td><a href="mailto:alexandre@doua-parking.fr">alexandre@doua-parking.fr</a></td>
                                     <td>Caméras</td>
+                                    <td>
+                                        <button type="button" class="close"  onclick="RemoveParking(this)" value='lol'>
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Thémis</th>
@@ -73,6 +173,11 @@
                                     <td>15</td>
                                     <td><a href="mailto:jean@doua-parking.fr">jean@doua-parking.fr</a></td>
                                     <td>Caméras</td>
+                                    <td>
+                                        <button type="button" class="close"  onclick="RemoveParking(this)" value='lol'>
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Stade INSA</th>
@@ -81,6 +186,11 @@
                                     <td>30</td>
                                     <td><a href="mailto:philippe@doua-parking.fr">philippe@doua-parking.fr</a></td>
                                     <td>Capteurs au sol</td>
+                                    <td>
+                                        <button type="button" class="close"  onclick="RemoveParking(this)" value='lol'>
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">BU INSA</th>
@@ -89,6 +199,11 @@
                                     <td>22</td>
                                     <td><a href="mailto:jacques@doua-parking.fr">jacques@doua-parking.fr</a></td>
                                     <td>Capteurs au sol</td>
+                                    <td>
+                                        <button type="button" class="close"  onclick="RemoveParking(this)" value='lol'>
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </td>                                    
                                 </tr>
                                 <tr>
                                     <th scope="row">Relais TCL IUT</th>
@@ -97,14 +212,24 @@
                                     <td>200</td>
                                     <td><a href="mailto:jean@tcl.fr">jean@tcl.fr</a></td>
                                     <td>Barrières</td>
+                                    <td>
+                                        <button type="button" class="close"  onclick="RemoveParking(this)" value='lol'>
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </td>                                    
                                 </tr>
                                 <tr>
                                     <th scope="row">INRIA</th>
-                                    <td>Voitures & Vélos</td>
+                                    <td>Vélos</td>
                                     <td><a href="https://www.google.com/maps/?q=45.786286,4.879512" target="_blank">45.786286, 4.879512</a></td>
                                     <td>42</td>
                                     <td><a href="mailto:alexandre@doua-parking.fr">alexandre@doua-parking.fr</a></td>
                                     <td>Caméras</td>
+                                    <td>
+                                        <button type="button" class="close"  onclick="RemoveParking(this)" value='lol'>
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </td>                                    
                                 </tr>
                                 <tr>
                                     <th scope="row">Physique nucléaire</th>
@@ -113,6 +238,11 @@
                                     <td>8</td>
                                     <td><a href="mailto:physnucl@doua-parking.fr">physnucl@doua-parking.fr</a></td>
                                     <td>Capteurs au sol</td>
+                                    <td>
+                                        <button type="button" class="close"  onclick="RemoveParking(this)" value='lol'>
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </td>                                    
                                 </tr>
                                 <tr>
                                     <th scope="row">Gymnase INSA</th>
@@ -121,13 +251,18 @@
                                     <td>45</td>
                                     <td><a href="mailto:insa@doua-parking.fr">insa@doua-parking.fr</a></td>
                                     <td>Capteurs au sol</td>
+                                    <td>
+                                        <button type="button" class="close"  onclick="RemoveParking(this)" value='lol'>
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </td>                                    
                                 </tr>
-
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
+            <!-- Ajout page -->
             <div class="tab-pane fade" id="form-parking" role="tabpanel" aria-labelledby="nav-form-tab">
                 <div class="col-md-12">
                     <h2>Ajouter un parking</h2>
@@ -141,7 +276,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="nbplace-form">Nombre de places</label>
-                            <input type="text" class="form-control" id="nbplace-form" placeholder="Saisir le nb de places">
+                            <input type="number" class="form-control" id="nbplace-form" placeholder="Saisir le nb de places">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="syscompage-form">Système de comptage</label>
@@ -153,23 +288,23 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="typevehi-from">Type de véhicule</label>
-                            <select multiple class="form-control" id="typevehi-from">
-                                <option>Voitures</option>
-                                <option>Vélos</option>
+                            <select  class="form-control" id="typevehi-form">
+                                <option value='Voitures' selected>Voitures</option>
+                                <option value='Velos'>Vélos</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="lat-gps-form">Coordonées GPS</label>
-                            <input type="text" class="form-control" id="lat-gps-form" placeholder="Latitude">
+                            <input type="number" step="any" class="form-control" id="lat-gps-form" placeholder="Latitude">
                             <p></p> <!-- #Sale -->
-                            <input type="text" class="form-control" id="lng-gps-form" placeholder="Longitude">
+                            <input type="number" step="any" class="form-control" id="lng-gps-form" placeholder="Longitude">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="email-form">Email responsable</label>
                             <input type="email" class="form-control" id="email-form" placeholder="Saisir l'email">
                         </div>
                         <div class="form-group col-md-12">
-                            <button class="btn btn-primary pull-right" onclick="ajoutParking()">Ajouter le parking</button>
+                            <button type="button" class="btn btn-primary pull-right" onclick="ajoutParking()">Ajouter le parking</button>
                         </div>
 
                     </form>
