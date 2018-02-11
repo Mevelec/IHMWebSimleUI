@@ -54,10 +54,10 @@
                         </div>
                     </div>
                     <div class="row row-top-buffer">
-                    - [ ] Modification d'un parking (non persistant) :<br>
+                    - [x] Modification d'un parking (non persistant) :<br>
                         <div class="row-padding-left">
-                        - [ ] plusieurs solutions d'implémentation sont possibles, donc choisissez-en une en tenant compte de l'ergonomie<br>
-                        - [ ] vous aurez probablement besoin de la méthode element.innerHTML()<br>
+                        - [x] plusieurs solutions d'implémentation sont possibles, donc choisissez-en une en tenant compte de l'ergonomie<br>
+                        - [x] vous aurez probablement besoin de la méthode element.innerHTML()<b>  element.innerHTML() non utilisé</b><br>
                         </div>
                     </div>
                     <div class="row row-top-buffer">
@@ -109,7 +109,7 @@
                                     <option value='Vélos'>Vélos</option>
                                 </select>
                             </div>
- <!--                            <div class="form-group col-md-4">
+                            <!--<div class="form-group col-md-4">
                                 <label for="lat-gps-form">Coordonées GPS</label>
                                 <input type="number" step="any" class="form-control" id="lat-gps-find" placeholder="Latitude">
                                 <p></p>
@@ -140,7 +140,7 @@
                                 </tr>
                             </thead>
                             <tbody id="parking-list">
-                                <tr>
+                                <tr value='nice'>
                                     <th scope="row">Nautibus</th>
                                     <td>Voitures</td>
                                     <td><a href="https://www.google.com/maps/?q=45.781894,4.865199" target="_blank">45.781894, 4.865199</a></td>
@@ -150,6 +150,9 @@
                                     <td>
                                         <button type="button" class="close"  onclick="RemoveParking(this)" value='lol'>
                                             <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <button type="button" class="close"  onclick="EditMode(this)" value='lol'>
+                                            <span class="glyphicon glyphicon-pencil">&#1542;</span>
                                         </button>
                                     </td>
                                 </tr>
@@ -164,6 +167,9 @@
                                         <button type="button" class="close"  onclick="RemoveParking(this)" value='lol'>
                                             <span aria-hidden="true">&times;</span>
                                         </button>
+                                        <button type="button" class="close"  onclick="EditMode(this)" value='lol'>
+                                            <span class="glyphicon glyphicon-pencil">&#1542;</span>
+                                        </button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -176,6 +182,9 @@
                                     <td>
                                         <button type="button" class="close"  onclick="RemoveParking(this)" value='lol'>
                                             <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <button type="button" class="close"  onclick="EditMode(this)" value='lol'>
+                                            <span class="glyphicon glyphicon-pencil">&#1542;</span>
                                         </button>
                                     </td>
                                 </tr>
@@ -190,6 +199,9 @@
                                         <button type="button" class="close"  onclick="RemoveParking(this)" value='lol'>
                                             <span aria-hidden="true">&times;</span>
                                         </button>
+                                        <button type="button" class="close"  onclick="EditMode(this)" value='lol'>
+                                            <span class="glyphicon glyphicon-pencil">&#1542;</span>
+                                        </button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -202,6 +214,9 @@
                                     <td>
                                         <button type="button" class="close"  onclick="RemoveParking(this)" value='lol'>
                                             <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <button type="button" class="close"  onclick="EditMode(this)" value='lol'>
+                                            <span class="glyphicon glyphicon-pencil">&#1542;</span>
                                         </button>
                                     </td>                                    
                                 </tr>
@@ -216,6 +231,9 @@
                                         <button type="button" class="close"  onclick="RemoveParking(this)" value='lol'>
                                             <span aria-hidden="true">&times;</span>
                                         </button>
+                                        <button type="button" class="close"  onclick="EditMode(this)" value='lol'>
+                                            <span class="glyphicon glyphicon-pencil">&#1542;</span>
+                                        </button>
                                     </td>                                    
                                 </tr>
                                 <tr>
@@ -228,6 +246,9 @@
                                     <td>
                                         <button type="button" class="close"  onclick="RemoveParking(this)" value='lol'>
                                             <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <button type="button" class="close"  onclick="EditMode(this)" value='lol'>
+                                            <span class="glyphicon glyphicon-pencil">&#1542;</span>
                                         </button>
                                     </td>                                    
                                 </tr>
@@ -242,6 +263,9 @@
                                         <button type="button" class="close"  onclick="RemoveParking(this)" value='lol'>
                                             <span aria-hidden="true">&times;</span>
                                         </button>
+                                        <button type="button" class="close"  onclick="EditMode(this)" value='lol'>
+                                            <span class="glyphicon glyphicon-pencil">&#1542;</span>
+                                        </button>
                                     </td>                                    
                                 </tr>
                                 <tr>
@@ -254,6 +278,9 @@
                                     <td>
                                         <button type="button" class="close"  onclick="RemoveParking(this)" value='lol'>
                                             <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <button type="button" class="close"  onclick="EditMode(this)" value='lol'>
+                                            <span class="glyphicon glyphicon-pencil">&#1542;</span>
                                         </button>
                                     </td>                                    
                                 </tr>

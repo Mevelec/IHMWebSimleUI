@@ -3,5 +3,10 @@
 }
 
 .row-padding-left {
-	padding-left:2vw; 
+	padding-left:2vw;
+}
+
+.alert {
+	position: absolute;
+	width: 100vw; 
 }
