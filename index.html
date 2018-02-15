@@ -30,6 +30,11 @@
             <!-- Accueil page -->
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="col-md-12">
+                    <h2> Membres</h2>
+                    <ul>
+                        <li>Alexandre BRUYAT 11707902</li>
+                        <li>Adrien MEVELEC 11706966</li>
+                    </ul>
                     <h2> Liste des Taches</h2>
                     <div class="row row-top-buffer">
                         - [x] Affichage des parkings déjà renseignés (nom, type de véhicules, coordonnées GPS, nombre de places, email responsable, système de comptage) sous forme d'un tableau (comportant une dizaine de lignes "codées en dur" pour les tests)<br>
@@ -41,7 +46,7 @@
                     - [x] Ajout d'un parking (non persistant) via un formulaire :
                         <div class="row-padding-left">
                         - [x] les données saisies sont vérifiées (validité, message d'erreurs, etc.)<b> Mails peut passer si du genre george@gmail</b> <br>
-                        - [ ] les informations de contact sont auto-complétées (pour tester vous devrez activer la gestion de profils de votre navigateur)<br>
+                        - [x] les informations de contact sont auto-complétées (pour tester vous devrez activer la gestion de profils de votre navigateur)<br>
                         - [x] le traitement du formulaire utilise des fonctions JavaScript du DOM (notamment, les méthodes createElement() et element.appendChild())<b> seul .append() a été utilisé</b><br>
                         - [x] le succès de l'ajout est confirmé par un message éphémère<b> Utilisation des alertes bootstrap, pb d'affichage : overlay, accumulation de multiples messages...</b><br>
                         </div>
@@ -68,10 +73,10 @@
                         </div>
                     </div>
                     <div class="row row-top-buffer">
-                    - [ ] Adaptation de votre site aux différents dispositifs ("responsive design", pour mobile, tablette, ordinateurs de bureau) :<br>
+                    - [x] Adaptation de votre site aux différents dispositifs ("responsive design", pour mobile, tablette, ordinateurs de bureau) :<br>
                     </div>
                     <div class="row row-top-buffer">
-                        - [ ] pour tester, vous pouvez utiliser votre smartphone ou la "vue adaptative" disponible dans les Outils de développement fournis par les navigateurs.<br>
+                        - [x] pour tester, vous pouvez utiliser votre smartphone ou la "vue adaptative" disponible dans les Outils de développement fournis par les navigateurs.<br>
                     </div>
                 </div>
             </div>
@@ -117,7 +122,7 @@
                             </div> -->
                             <div class="form-group col-md-4">
                                 <label for="email-find">Email responsable</label>
-                                <input type="text" class="form-control" id="email-find" placeholder="Saisir l'email">
+                                <input type="text" class="form-control" id="email-find" placeholder="Saisir l'email" autocomplete="on">
                             </div>
                             <div class="form-group col-md-12">
                                 <button type="button" class="btn btn-primary pull-right" onclick="find()">Chercher</button>
@@ -293,9 +298,6 @@
             <div class="tab-pane fade" id="form-parking" role="tabpanel" aria-labelledby="nav-form-tab">
                 <div class="col-md-12">
                     <h2>Ajouter un parking</h2>
-                    <div id="status">
-
-                    </div>
                     <form class="col-md-12 row">
                         <div class="form-group col-md-4 has-danger">
                             <label for="nom-form">Nom du parking</label>
@@ -328,7 +330,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="email-form">Email responsable</label>
-                            <input type="email" class="form-control" id="email-form" placeholder="Saisir l'email">
+                            <input type="email" class="form-control" id="email-form" placeholder="Saisir l'email" autocomplete="on">
                         </div>
                         <div class="form-group col-md-12">
                             <button type="button" class="btn btn-primary pull-right" onclick="ajoutParking()">Ajouter le parking</button>

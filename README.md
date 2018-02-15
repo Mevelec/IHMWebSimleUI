@@ -9,7 +9,7 @@ A faire :
 
 - [x] Ajout d'un parking (non persistant) via un formulaire :
     - [x] les données saisies sont vérifiées (validité, message d'erreurs, etc.) // Mails peut passer si du genre george@gmail
-    - [ ] les informations de contact sont auto-complétées (pour tester vous devrez activer la gestion de profils de votre navigateur)
+    - [x] les informations de contact sont auto-complétées (pour tester vous devrez activer la gestion de profils de votre navigateur)
     - [x] le traitement du formulaire utilise des fonctions JavaScript du DOM (notamment, les méthodes createElement() et element.appendChild()) // uniquement utilisé .append()
     - [x] le succès de l'ajout est confirmé par un message éphémère // Utilisation des alertes bootstrap, pb d'affichage : overlay, accumulation de multiples messages...
 - [x] Suppression d'un parking (non persistant) :
@@ -21,5 +21,5 @@ A faire :
 - [x] Recherche dans le tableau :
     - [x] la requête (texte libre) est saisie dans une barre de recherche // formulaire de recherche crée, Pas de Case sensitive et en mode Word Part, ++ certaines fonctionalitées de recherches
     - [x] le résultat de la recherche est une liste de toutes les ressources correspondant à la requête
-- [ ] Adaptation de votre site aux différents dispositifs ("responsive design", pour mobile, tablette, ordinateurs de bureau) :
-    - [ ] pour tester, vous pouvez utiliser votre smartphone ou la "vue adaptative" disponible dans les Outils de développement fournis par les navigateurs.
+- [x] Adaptation de votre site aux différents dispositifs ("responsive design", pour mobile, tablette, ordinateurs de bureau) :
+    - [x] pour tester, vous pouvez utiliser votre smartphone ou la "vue adaptative" disponible dans les Outils de développement fournis par les navigateurs.

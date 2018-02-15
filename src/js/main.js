@@ -10,23 +10,18 @@ function ajoutParking() {
     var vehicule=$('#typevehi-form');
     var controlTool=$('#syscompage-form');
 
-    //TODO verifier aussi le type des variables + verifier les selects
     validerInput(nom,nom.val().length!==0);
     validerInput(nbplace,nbplace.val().length!==0);
     validerInput(lat,lat.val().length!==0);
     validerInput(long,long.val().length!==0);
     validerInput(mail,mail.val().length!==0);
 
-
-    var status=$('#status');
     if(error){
-        //status.html("Ajouter un joli message d'erreur");
         $('#alertOutputs').prepend("<div class='alert alert-danger fade-5 show' id='alert' role='alert'><strong>Oups ! </strong> Veuillez verifier les informations spécifiées.</div>");
         setTimeout(function(){
            $('#alert').alert('close');
         }, 5000);
     }else{
-        status.html('');
         var table =$('#collapseParking').find( "tbody");
         var res ="<tr><th scope='row'>"+nom.val()+"</th><td>"+ vehicule.val()+"</td><td><a href='https://www.google.com/maps/?q="+lat.val()+", "+long.val()+"' target='_blank'>"+lat.val()+","+long.val()+"</a></td><td>"+nbplace.val()+"</td><td><a href='mailto:"+mail.val()+"'>"+mail.val()+"</a></td><td>"+controlTool.val()+"</td><td><button type='button' class='close'  onclick='RemoveParking(this)' value='lol'><span aria-hidden='true'>&times;</span></button><button type='button' class='close'  onclick='EditMode(this)' value='lol'><span class='glyphicon glyphicon-pencil'>&#1542;</span></button></td></tr>";
         table.append(res);
@@ -68,7 +63,6 @@ function find()
     var vehicule=$('#typevehi-find');
     var controlTool=$('#syscompage-find');
 
-    // alert(nom.val()+"  "+nbplace.val()+"  "+lat.val()+"  "+long.val()+"  "+mail.val()+"  "+vehicule.val()+"  "+controlTool.val());
     $('#parking-list').children().each(function() {
         var i = 0;
         var toDisplay=true;
@@ -216,8 +210,7 @@ function EditMode(but)
                 "        <option value='Barrières'>Barrières</option>"+
                 "        <option value='Capteurs au sol' selected>Capteurs au sol</option>";
             break;
-        };
-                
+        }
     form+=      "    </select>"+
                 "</td>"+
                 "<td>"+
@@ -247,7 +240,6 @@ function valdateModif(but)
     validerInput(mail,mail.val().length!==0);
 
     if(error){
-        //status.html("Ajouter un joli message d'erreur");
         $('#alertOutputs').prepend("<div class='alert alert-danger fade-5 show' id='alert' role='alert'><strong>Oups ! </strong> Veuillez verifier les informations spécifiées.</div>");
         setTimeout(function(){
            $('#alert').alert('close');
