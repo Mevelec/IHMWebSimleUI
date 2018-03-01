@@ -23,7 +23,7 @@ function ajoutParking() {
         }, 5000);
     }else{
         var table =$('#collapseParking').find( "tbody");
-        var res ="<tr><th scope='row'>"+nom.val()+"</th><td>"+ vehicule.val()+"</td><td><a href='https://www.google.com/maps/?q="+lat.val()+", "+long.val()+"' target='_blank'>"+lat.val()+","+long.val()+"</a></td><td>"+nbplace.val()+"</td><td><a href='mailto:"+mail.val()+"'>"+mail.val()+"</a></td><td>"+controlTool.val()+"</td><td><button type='button' class='close'  onclick='RemoveParking(this)' value='lol'><span aria-hidden='true'>&times;</span></button><button type='button' class='close'  onclick='EditMode(this)' value='lol'><span class='glyphicon glyphicon-pencil'>&#1542;</span></button></td></tr>";
+        var res ="<tr><th scope='row'>"+nom.val()+"</th><td>"+ vehicule.val()+"</td><td><a href='https://www.google.com/maps/?q="+lat.val()+", "+long.val()+"' target='_blank'>"+lat.val()+","+long.val()+"</a></td><td>"+nbplace.val()+"</td><td><a href='mailto:"+mail.val()+"'>"+mail.val()+"</a></td><td>"+controlTool.val()+"</td><td><button type='button' class='close'  onclick='RemoveParking(this)' value='lol'><i class=\"fa fa-trash\"></i></button><button type='button' class='close'  onclick='EditMode(this)' value='lol'><i class=\"fa fa-edit\"></i></button></td></tr>";
         table.append(res);
         $('#alertOutputs').prepend("<div class='alert alert-success fade-5 show' id='alert' role='alert'><strong>Inséré : </strong> Issertion réussie.</div>");
         setTimeout(function(){
@@ -246,7 +246,7 @@ function valdateModif(but)
         }, 5000);
     }else{
         var table =$('#collapseParking').find( "tbody");
-        var res ="<th scope='row'>"+nom.val()+"</th><td>"+ vehicule.val()+"</td><td><a href='https://www.google.com/maps/?q="+lat.val()+","+long.val()+"' target='_blank'>"+lat.val()+", "+long.val()+"</a></td><td>"+nbplace.val()+"</td><td><a href='mailto:"+mail.val()+"'>"+mail.val()+"</a></td><td>"+controlTool.val()+"</td><td><button type='button' class='close'  onclick='RemoveParking(this)' value='lol'><span aria-hidden='true'>&times;</span></button><button type='button' class='close'  onclick='EditMode(this)' value='lol'><span class='glyphicon glyphicon-pencil'>&#1542;</span></button></td>";
+        var res ="<th scope='row'>"+nom.val()+"</th><td>"+ vehicule.val()+"</td><td><a href='https://www.google.com/maps/?q="+lat.val()+","+long.val()+"' target='_blank'>"+lat.val()+", "+long.val()+"</a></td><td>"+nbplace.val()+"</td><td><a href='mailto:"+mail.val()+"'>"+mail.val()+"</a></td><td>"+controlTool.val()+"</td><td><button type='button' class='close'  onclick='RemoveParking(this)' value='lol'><i class=\"fa fa-trash\"></i></button><button type='button' class='close'  onclick='EditMode(this)' value='lol'><i class=\"fa fa-edit\"></i></button></td>";
         obj.empty();
         obj.append(res);
         
