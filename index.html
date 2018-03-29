@@ -19,88 +19,16 @@
         <div class="text-center">
             <h1>Douarking</h1>
         </div>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Accueil</a>
-            <a class="nav-item nav-link" id="nav-liste-tab" data-toggle="tab" href="#liste-parking" role="tab" aria-controls="liste-parking" aria-selected="false">Liste</a>
-            <a class="nav-item nav-link" id="nav-form-tab" data-toggle="tab" href="#form-parking" role="tab" aria-controls="form-parking" aria-selected="false">Ajout</a>
-        </div>
     </nav>
 
     <div class="container">
         <div class="tab-content" id="nav-tabContent">
-            <!-- Accueil page -->
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <div class="col-md-12">
-                    <h2> Membres</h2>
-                    <ul>
-                        <li>Alexandre BRUYAT 11707902</li>
-                        <li>Adrien MEVELEC 11706966</li>
-                    </ul>
-                    <h2> Liste des Taches</h2>
-                    <div class="row row-top-buffer">
-                        - [x] Affichage des parkings déjà renseignés (nom, type de véhicules, coordonnées GPS, nombre de places, email responsable, système de comptage) sous forme d'un tableau (comportant une dizaine de lignes "codées en dur" pour les tests)<br>
-                     </div>
-                     <div class="row row-top-buffer">
-                        - [x] Repli du tableau (afficher / masquer) en utilisant la fonction "collapse" de Bootstrap (pensez à inclure en plus de la bibliothèque bootstrap.js, jquery.js)<br>
-                    </div>
-                    <div class="row row-top-buffer">
-                    - [x] Ajout d'un parking (non persistant) via un formulaire :
-                        <div class="row-padding-left">
-                        - [x] les données saisies sont vérifiées (validité, message d'erreurs, etc.)<b> Mails peut passer si du genre george@gmail</b> <br>
-                        - [x] les informations de contact sont auto-complétées (pour tester vous devrez activer la gestion de profils de votre navigateur)<br>
-                        - [x] le traitement du formulaire utilise des fonctions JavaScript du DOM (notamment, les méthodes createElement() et element.appendChild())<b> seul .append() a été utilisé</b><br>
-                        - [x] le succès de l'ajout est confirmé par un message éphémère<b> Utilisation des alertes bootstrap, pb d'affichage : overlay, accumulation de multiples messages...</b><br>
-                        </div>
-                    </div>
-                    <div class="row row-top-buffer">
-                    - [x] Suppression d'un parking (non persistant) :<br>
-                        <div class="row-padding-left">
-                        - [x] plusieurs solutions d'implémentation sont possibles, donc choisissez-en une en tenant compte de l'ergonomie<b> Supression par une croix lors du visionnage de la table</b><br>
-                        - [x] vous aurez probablement besoin de la méthode element.removeChild()<b> .remove() Utilisé</b><br>
-                        </div>
-                    </div>
-                    <div class="row row-top-buffer">
-                    - [x] Modification d'un parking (non persistant) :<br>
-                        <div class="row-padding-left">
-                        - [x] plusieurs solutions d'implémentation sont possibles, donc choisissez-en une en tenant compte de l'ergonomie <b> Modification par une icone lors du visionnage de la table ++ possibilitée de modifier plusieurs entrées à la fois et verifications des données</b><br>
-                        - [x] vous aurez probablement besoin de la méthode element.innerHTML()<b>  element.innerHTML() non utilisé</b><br>
-                        </div>
-                    </div>
-                    <div class="row row-top-buffer">
-                    - [x] Recherche dans le tableau :<br>
-                        <div class="row-padding-left">
-                        - [x] la requête (texte libre) est saisie dans une barre de recherche<b> formulaire de recherche crée, Pas de Case sensitive et en mode Word Part, ++ certaines fonctionalitées  de recherches</b><br>
-                        - [x] le résultat de la recherche est une liste de toutes les ressources correspondant à la requête<br>
-                        </div>
-                    </div>
-                    <div class="row row-top-buffer">
-                    - [x] Adaptation de votre site aux différents dispositifs ("responsive design", pour mobile, tablette, ordinateurs de bureau) :<br>
-                    </div>
-                    <div class="row row-top-buffer">
-                        - [x] pour tester, vous pouvez utiliser votre smartphone ou la "vue adaptative" disponible dans les Outils de développement fournis par les navigateurs.<br>
-                    </div>
-                    <div class="row row-top-buffer">
-                        - [ ] vider les champs après validation<br>
-                    </div>
-                    <div class="row row-top-buffer">
-                        - [ ] auto completion sur les champs (des options spécifiées)<br>
-                    </div>
-                    <div class="row row-top-buffer">
-                        - [ ] aligner bouttons editer supprimer<br>
-                    </div>
-                    <div class="row row-top-buffer"></div>
-                    <div class="row row-top-buffer"></div>
-                    <div class="row row-top-buffer"></div>
-                </div>
-            </div>
-            <!-- Liste page -->
-            <div class="tab-pane fade" id="liste-parking" role="tabpanel" aria-labelledby="nav-liste-tab">
                 <div class="col-md-12">
                     <h2>Liste des parking</h2>
-                    <a data-toggle="collapse" href="#Recherche-Menu" role="button" aria-expanded="false" aria-controls="Recherche-Menu">
-                        Recherche
+                    <a data-toggle="collapse" href="#Recherche-Menu" onclick="ouvertureRecherche()" role="button" aria-expanded="false" aria-controls="Recherche-Menu">
+                        Rechercher <span id="icon-search"><i class="fa fa-angle-double-down"></i></span>
                     </a>
-                    <div class="collapse" id="Recherche-Menu" class="col-md-12">
+                    <div id="Recherche-Menu" class="col-md-12 collapse">
                         <form class="col-md-12 row">
                             <div class="form-group col-md-4 has-danger">
                                 <label for="nom-form">Nom du parking</label>
@@ -108,7 +36,7 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="nbplace-form">Nombre de places</label>
-                                <input type="number" class="form-control" id="nbplace-find" placeholder="Saisir le nb de places">
+                                <input type="text" class="form-control" id="nbplace-find" placeholder="Saisir le nb de places">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="syscompage-form">Système de comptage</label>
@@ -138,14 +66,11 @@
                                 <input type="text" class="form-control" id="email-find" placeholder="Saisir l'email" autocomplete="on">
                             </div>
                             <div class="form-group col-md-12">
-                                <button type="button" class="btn btn-primary pull-right" onclick="find()">Chercher</button>
+                                <button type="button" class="btn btn-primary pull-right" onclick="find()">Rechercher</button>
                             </div>
                         </form>
                     </div>
-                    <a data-toggle="collapse" href="#collapseParking" role="button" aria-expanded="false" aria-controls="collapseParking">
-                        Afficher/Masquer
-                    </a>
-                    <div class="collapse" id="collapseParking">
+                    <div>
                         <table class="table table-hover">
                             <thead class="thead-inverse">
                                 <tr>
@@ -155,6 +80,7 @@
                                     <th>Nombre de places</th>
                                     <th>Email responsable</th>
                                     <th>Système de comptage</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody id="parking-list">
@@ -302,56 +228,42 @@
                                         </button>
                                     </td>                                    
                                 </tr>
+                                <tr>
+                                    <td scope="row">
+                                        <input class="form-control" id="nom-edit" placeholder="Saisir le nom" type="text">
+                                    </td>
+                                    <td>
+                                        <select class="form-control" id="typevehi-edit">
+                                            <option value="Voitures">Voitures</option>
+                                            <option value="Vélos">Vélos</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input class="form-control" id="lat-gps-edit" placeholder="Latitude" type="text">
+                                        <p></p>
+                                        <input step="any" class="form-control" id="lng-gps-edit" placeholder="Longitude" type="text">
+                                    </td>
+                                    <td>
+                                        <input class="form-control" id="nbplace-edit" placeholder="Saisir le nb de places" type="text">
+                                    </td>
+                                    <td>
+                                        <input class="form-control" id="email-edit" placeholder="Saisir l'email" type="email">
+                                    </td>
+                                    <td>
+                                        <select class="form-control" id="syscompage-edit">
+                                            <option value="Caméras">Caméras</option>
+                                            <option value="Barrières">Barrières</option>
+                                            <option value="Capteurs au sol">Capteurs au sol</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary pull-right" onclick="valdateModif(this, true)">Ajouter</button>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-            </div>
-            <!-- Ajout page -->
-            <div class="tab-pane fade" id="form-parking" role="tabpanel" aria-labelledby="nav-form-tab">
-                <div class="col-md-12">
-                    <h2>Ajouter un parking</h2>
-                    <form class="col-md-12 row">
-                        <div class="form-group col-md-4 has-danger">
-                            <label for="nom-form">Nom du parking</label>
-                            <input type="text" class="form-control" id="nom-form" placeholder="Saisir le nom">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="nbplace-form">Nombre de places</label>
-                            <input type="number" class="form-control" id="nbplace-form" placeholder="Saisir le nb de places">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="syscompage-form">Système de comptage</label>
-                            <select class="form-control" id="syscompage-form">
-                                <option value="Caméras">Caméras</option>
-                                <option value="Barrières">Barrières</option>
-                                <option value="Capteurs au sol">Capteurs au sol</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="typevehi-from">Type de véhicule</label>
-                            <select  class="form-control" id="typevehi-form">
-                                <option value='Voitures' selected>Voitures</option>
-                                <option value='Velos'>Vélos</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="lat-gps-form">Coordonées GPS</label>
-                            <input type="number" step="any" class="form-control" id="lat-gps-form" placeholder="Latitude">
-                            <p></p> <!-- #Sale -->
-                            <input type="number" step="any" class="form-control" id="lng-gps-form" placeholder="Longitude">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="email-form">Email responsable</label>
-                            <input type="email" class="form-control" id="email-form" placeholder="Saisir l'email" autocomplete="on">
-                        </div>
-                        <div class="form-group col-md-12">
-                            <button type="button" class="btn btn-primary pull-right" onclick="ajoutParking()">Ajouter le parking</button>
-                        </div>
-
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
 </body>

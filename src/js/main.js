@@ -1,38 +1,5 @@
 var error=false;
 
-function ajoutParking() {
-    error=false;
-    var nom=$('#nom-form');
-    var nbplace=$('#nbplace-form');
-    var lat=$('#lat-gps-form');
-    var long=$('#lng-gps-form');
-    var mail=$('#email-form');
-    var vehicule=$('#typevehi-form');
-    var controlTool=$('#syscompage-form');
-
-    validerInput(nom,nom.val().length!==0);
-    validerInput(nbplace,nbplace.val().length!==0);
-    validerInput(lat,lat.val().length!==0);
-    validerInput(long,long.val().length!==0);
-    validerInput(mail,mail.val().length!==0);
-
-    if(error){
-        $('#alertOutputs').prepend("<div class='alert alert-danger fade-5 show' id='alert' role='alert'><strong>Oups ! </strong> Veuillez verifier les informations spécifiées.</div>");
-        setTimeout(function(){
-           $('#alert').alert('close');
-        }, 5000);
-    }else{
-        var table =$('#collapseParking').find( "tbody");
-        var res ="<tr><th scope='row'>"+nom.val()+"</th><td>"+ vehicule.val()+"</td><td><a href='https://www.google.com/maps/?q="+lat.val()+", "+long.val()+"' target='_blank'>"+lat.val()+","+long.val()+"</a></td><td>"+nbplace.val()+"</td><td><a href='mailto:"+mail.val()+"'>"+mail.val()+"</a></td><td>"+controlTool.val()+"</td><td><button type='button' class='close'  onclick='RemoveParking(this)' value='lol'><i class=\"fa fa-trash\"></i></button><button type='button' class='close'  onclick='EditMode(this)' value='lol'><i class=\"fa fa-edit\"></i></button></td></tr>";
-        table.append(res);
-        $('#alertOutputs').prepend("<div class='alert alert-success fade-5 show' id='alert' role='alert'><strong>Inséré : </strong> Issertion réussie.</div>");
-        setTimeout(function(){
-           $('#alert').alert('close');
-        }, 5000);
-
-    }
-}
-
 function validerInput(obj, valide) {
     if(!valide){
         error=true;
@@ -181,12 +148,12 @@ function EditMode(but)
     form +=     "    </select>"+
                 "</td>"+
                 "<td>"+
-                "    <input type='number' step='any' class='form-control' id='lat-gps-edit' placeholder='Latitude' value='"+lat+"'>"+
+                "    <input type='text' step='any' class='form-control' id='lat-gps-edit' placeholder='Latitude' value='"+lat+"'>"+
                 "    <p></p> <!-- #Sale -->"+
-                "    <input type='number' step='any' class='form-control' id='lng-gps-edit' placeholder='Longitude' value='"+long+"'>"+
+                "    <input type='text' step='any' class='form-control' id='lng-gps-edit' placeholder='Longitude' value='"+long+"'>"+
                 "</td>"+
                 "<td>"+
-                "    <input type='number' class='form-control' id='nbplace-edit' placeholder='Saisir le nb de places' value='"+nbplace+"'>"+
+                "    <input type='text' class='form-control' id='nbplace-edit' placeholder='Saisir le nb de places' value='"+nbplace+"'>"+
                 "</td>"+
                 "<td>"+
                 "    <input type='email' class='form-control' id='email-edit' placeholder='Saisir l'email' value='"+mail+"'>"+
@@ -220,8 +187,12 @@ function EditMode(but)
     obj.append(form);
 }
 
-function valdateModif(but)
+function valdateModif(but, nouveau)
 {
+    if(nouveau===undefined){
+        nouveau = false;
+    }
+
     var obj = $(but).parent().parent();
     error = false;
 
@@ -249,12 +220,62 @@ function valdateModif(but)
         var res ="<th scope='row'>"+nom.val()+"</th><td>"+ vehicule.val()+"</td><td><a href='https://www.google.com/maps/?q="+lat.val()+","+long.val()+"' target='_blank'>"+lat.val()+", "+long.val()+"</a></td><td>"+nbplace.val()+"</td><td><a href='mailto:"+mail.val()+"'>"+mail.val()+"</a></td><td>"+controlTool.val()+"</td><td><button type='button' class='close'  onclick='RemoveParking(this)' value='lol'><i class=\"fa fa-trash\"></i></button><button type='button' class='close'  onclick='EditMode(this)' value='lol'><i class=\"fa fa-edit\"></i></button></td>";
         obj.empty();
         obj.append(res);
-        
-        $('#alertOutputs').prepend("<div class='alert alert-success fade-5 show' id='alert' role='alert'><strong>Modifié : </strong> Modification réussie.</div>");
-        setTimeout(function(){
-           $('#alert').alert('close');
-        }, 5000);
 
+        if(nouveau){
+            $('#alertOutputs').prepend("<div class='alert alert-success fade-5 show' id='alert' role='alert'><strong>Ajout : </strong> Insertion réussie.</div>");
+            setTimeout(function () {
+                $('#alert').alert('close');
+            }, 5000);
+            //Sale
+            var tmp = $('#parking-list').html();
+            $('#parking-list').html(tmp+'<tr>\n' +
+                '                                    <td scope="row">\n' +
+                '                                        <input class="form-control" id="nom-edit" placeholder="Saisir le nom" type="text">\n' +
+                '                                    </td>\n' +
+                '                                    <td>\n' +
+                '                                        <select class="form-control" id="typevehi-edit">\n' +
+                '                                            <option value="Voitures">Voitures</option>\n' +
+                '                                            <option value="Vélos">Vélos</option>\n' +
+                '                                        </select>\n' +
+                '                                    </td>\n' +
+                '                                    <td>\n' +
+                '                                        <input class="form-control" id="lat-gps-edit" placeholder="Latitude" type="text">\n' +
+                '                                        <p></p>\n' +
+                '                                        <input step="any" class="form-control" id="lng-gps-edit" placeholder="Longitude" type="text">\n' +
+                '                                    </td>\n' +
+                '                                    <td>\n' +
+                '                                        <input class="form-control" id="nbplace-edit" placeholder="Saisir le nb de places" type="text">\n' +
+                '                                    </td>\n' +
+                '                                    <td>\n' +
+                '                                        <input class="form-control" id="email-edit" placeholder="Saisir l\'email" type="email">\n' +
+                '                                    </td>\n' +
+                '                                    <td>\n' +
+                '                                        <select class="form-control" id="syscompage-edit">\n' +
+                '                                            <option value="Caméras">Caméras</option>\n' +
+                '                                            <option value="Barrières">Barrières</option>\n' +
+                '                                            <option value="Capteurs au sol">Capteurs au sol</option>\n' +
+                '                                        </select>\n' +
+                '                                    </td>\n' +
+                '                                    <td>\n' +
+                '                                        <button type="button" class="btn btn-primary pull-right" onclick="valdateModif(this, true)">Ajouter</button>\n' +
+                '                                    </td>\n' +
+                '                                </tr>');
+        }else {
+
+            $('#alertOutputs').prepend("<div class='alert alert-success fade-5 show' id='alert' role='alert'><strong>Modifié : </strong> Modification réussie.</div>");
+            setTimeout(function () {
+                $('#alert').alert('close');
+            }, 5000);
+        }
     }
+}
 
+var ouvert = false;
+function ouvertureRecherche() {
+    if(ouvert){
+        $('#icon-search').html('<i class="fa fa-angle-double-down"></i>');
+    }else{
+        $('#icon-search').html('<i class="fa fa-angle-double-up"></i>');
+    }
+    ouvert = !ouvert;
 }
