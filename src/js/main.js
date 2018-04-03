@@ -13,11 +13,13 @@ function validerInput(obj, valide) {
 
 function RemoveParking(obj)
 {
-    $(obj).parent().parent().remove();
-    $('#alertOutputs').prepend("<div class='alert alert-warning fade-5 show' id='alert' role='alert'><strong>Supprimée ! </strong> Ligne supprimée.</div>");
-    setTimeout(function(){
-       $('#alert').alert('close');
-    }, 5000);
+    if(confirm("Voulez-vous vraiment supprimer cette ligne ?")) {
+        $(obj).parent().parent().remove();
+        $('#alertOutputs').prepend("<div class='alert alert-warning fade-5 show' id='alert' role='alert'><strong>Supprimée ! </strong> Ligne supprimée.</div>");
+        setTimeout(function () {
+            $('#alert').alert('close');
+        }, 5000);
+    }
 }
 
 function find()
@@ -113,7 +115,7 @@ function EditMode(but)
                 vehicule=$(this).text();
                 break;
             case 2: /*check lat, long*/
-                str= $(this).text().split(", ")
+                str= $(this).text().split(", ");
                 lat=str[0];
                 long=str[1];
                 break;
@@ -121,12 +123,12 @@ function EditMode(but)
                 nbplace=$(this).text();
                 break;
             case 4: /*check mail*/
-               mail=$(this).text()
+               mail=$(this).text();
                 break;
             case 5: /*check controlTool*/
-                controlTool=$(this).text()
+                controlTool=$(this).text();
                 break;
-        };
+        }
         i++;
     });
     var form = "<td scope='row'>"+
@@ -205,10 +207,10 @@ function valdateModif(but, nouveau)
     var controlTool = obj.children().eq(5).children().eq(0);
 
     validerInput(nom,nom.val().length!==0);
-    validerInput(nbplace,nbplace.val().length!==0);
-    validerInput(lat,lat.val().length!==0);
-    validerInput(long,long.val().length!==0);
-    validerInput(mail,mail.val().length!==0);
+    validerInput(nbplace,nbplace.val().length!==0 && isNumeric(nbplace.val()));
+    validerInput(lat,lat.val().length!==0 && isNumeric(lat.val()));
+    validerInput(long,long.val().length!==0 && isNumeric(long.val()));
+    validerInput(mail,mail.val().length!==0 && isEmail(mail.val()));
 
     if(error){
         $('#alertOutputs').prepend("<div class='alert alert-danger fade-5 show' id='alert' role='alert'><strong>Oups ! </strong> Veuillez verifier les informations spécifiées.</div>");
@@ -217,7 +219,10 @@ function valdateModif(but, nouveau)
         }, 5000);
     }else{
         var table =$('#collapseParking').find( "tbody");
-        var res ="<th scope='row'>"+nom.val()+"</th><td>"+ vehicule.val()+"</td><td><a href='https://www.google.com/maps/?q="+lat.val()+","+long.val()+"' target='_blank'>"+lat.val()+", "+long.val()+"</a></td><td>"+nbplace.val()+"</td><td><a href='mailto:"+mail.val()+"'>"+mail.val()+"</a></td><td>"+controlTool.val()+"</td><td><button type='button' class='close'  onclick='RemoveParking(this)' value='lol'><i class=\"fa fa-trash\"></i></button><button type='button' class='close'  onclick='EditMode(this)' value='lol'><i class=\"fa fa-edit\"></i></button></td>";
+        var res ="<th scope='row'>"+nom.val()+"</th><td>"+ vehicule.val()+"</td><td><a href='https://www.google.com/maps/?q="+lat.val()+","+long.val()+"' target='_blank'>"+lat.val()+", "+long.val()+"</a></td><td>"+nbplace.val()+"</td><td><a href='mailto:"+mail.val()+"'>"+mail.val()+"</a></td><td>"+controlTool.val()+"</td><td style=\"font-size: x-large;\">\n" +
+            "                                        <i class=\"fa fa-edit\" onclick=\"EditMode(this)\" ></i>\n" +
+            "                                        <i class=\"fa fa-trash\" onclick=\"RemoveParking(this)\" style=\"margin-left: 3px;\"></i>\n" +
+            "                                    </td>";
         obj.empty();
         obj.append(res);
 
@@ -278,4 +283,15 @@ function ouvertureRecherche() {
         $('#icon-search').html('<i class="fa fa-angle-double-up"></i>');
     }
     ouvert = !ouvert;
+}
+
+function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+function isEmail(email)
+{
+    var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+   return re.test(email);
+
 }
