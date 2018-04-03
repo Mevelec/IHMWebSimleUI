@@ -220,8 +220,8 @@ function valdateModif(but, nouveau)
     }else{
         var table =$('#collapseParking').find( "tbody");
         var res ="<th scope='row'>"+nom.val()+"</th><td>"+ vehicule.val()+"</td><td><a href='https://www.google.com/maps/?q="+lat.val()+","+long.val()+"' target='_blank'>"+lat.val()+", "+long.val()+"</a></td><td>"+nbplace.val()+"</td><td><a href='mailto:"+mail.val()+"'>"+mail.val()+"</a></td><td>"+controlTool.val()+"</td><td style=\"font-size: x-large;\">\n" +
-            "                                        <i class=\"fa fa-edit\" onclick=\"EditMode(this)\" ></i>\n" +
-            "                                        <i class=\"fa fa-trash\" onclick=\"RemoveParking(this)\" style=\"margin-left: 3px;\"></i>\n" +
+            "                                        <i class=\"fa fa-edit col-md-12\" onclick=\"EditMode(this)\" ></i>\n" +
+            "                                        <i class=\"fa fa-trash col-md-12\" onclick=\"RemoveParking(this)\" style=\"margin-left: 0px;\"></i>\n" +
             "                                    </td>";
         obj.empty();
         obj.append(res);
