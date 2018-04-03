@@ -279,6 +279,9 @@ var ouvert = false;
 function ouvertureRecherche() {
     if(ouvert){
         $('#icon-search').html('<i class="fa fa-angle-double-down"></i>');
+        $('#parking-list').children().each(function() {
+            $(this).show();
+        });
     }else{
         $('#icon-search').html('<i class="fa fa-angle-double-up"></i>');
     }
